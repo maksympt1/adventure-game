@@ -15,6 +15,10 @@ def print_pause_long(s):
 
 
 def main():
+    global items
+    items = ["dagger"]
+    global enemy
+    enemy = random.choice(enemies)
     # Introduction
     print_pause_long("You find yourself standing in an open field, filled with grass and yellow wildflowers.")
     print_pause_long(f"Rumor has it that a {enemy} is somewhere around here, and has been terrifying the nearby village.")
@@ -26,8 +30,8 @@ def main():
 
 def field():
     # Things that happen when the player runs back to the field
-    print_pause("\nEnter 1 to knock on the door of the house.")
-    print_pause("Enter 2 to peek into the cave.")
+    print("\nEnter 1 to knock on the door of the house.")
+    print("Enter 2 to peek into the cave.")
     print("\nWhat would you like to do?")
     choice1 = input("(Please enter 1 or 2).\n")
     while True:
@@ -65,8 +69,8 @@ def house():
     print_pause(f"The {enemy} attacks you!")
     if "sword" not in items:
         print_pause("You feel a bit under-prepared for this, what with only having a tiny dagger.")
-    print_pause("\nEnter 1 to fight.")
-    print_pause("Enter 2 to run away.")
+    print("\nEnter 1 to fight.")
+    print("Enter 2 to run away.")
     print("\nWhat would you like to do?")
     choice2 = input("(Please enter 1 or 2).\n")
     while True:
@@ -100,15 +104,11 @@ def lost():
 
 
 def play_again():
-    print_pause("\nWould you like to play again?")
+    print("\nWould you like to play again?")
     choice3 = input("(Please enter 'y' or 'n').\n")
     while True:
         if choice3 == 'y':
             print_pause("Excellent, restarting the game...")
-            items.append("dagger")
-            items.remove("sword")
-            global enemy
-            enemy = random.choice(enemies)
             main()
             break
         elif choice3 == 'n':
@@ -117,11 +117,8 @@ def play_again():
             choice3 = input("(Please enter 'y' or 'n').\n")
 
 
-# Start the variables
+# Global variable
 enemies = ["fire dragon", "giant troll", "poisonous pirate"]
-enemy = random.choice(enemies)
-items = ["dagger"]
-
-
+enemy = "undefined"
 # Launch the game
 main()
